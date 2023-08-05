@@ -13,6 +13,12 @@ $not_found = fn() => '<h1>404 - not found</h1>';
 $get_controller = fn($controller) => include_once realpath(ROOT."/app/Controllers/$controller.php");
 
 
+function conf($mix) {
+    $url = ROOT."/config/{$mix}.json";
+    $json = file_get_contents($url);
+    return json_decode($json, True);
+}
+
 function render($view, $params=null)
 {
     

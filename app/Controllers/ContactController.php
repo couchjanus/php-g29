@@ -1,33 +1,44 @@
 <?php
 
-// include_once realpath(ROOT."/app/Views/contact/index.php");
+$address = conf('contacts');
 
-$messages = [
-    [
-        "name"=> "Mouse",
-        "surname" => "Quin",
-        "email" => "test@my.cat",
-        "message" => "hello Cats", 
-        "created_at" => "July 30, 2023"
-    ],
-];
+
+$link = mysqli_connect('localhost', 'root', '', 'shopaholic');
+
+if ($link) {
+    echo "connected successfully";
+} else {
+    die("Error: Could not connect".mysqli_connect_error());
+}
+$messages = [];
 
 if ($_POST) {
     // var_dump($_POST);
+    $name = mysqli_real_escape_string($link, $_POST['name']);
+    $surname = mysqli_real_escape_string($link, $_POST['surname']);
+    $email = mysqli_real_escape_string($link, $_POST['email']);
+    $message = mysqli_real_escape_string($link, $_POST['message']);
+        
+    // $sql = "INSERT INTO feedback (name, surname, email, message) VALUES ('$name', '$surname', '$email', '$message')";
 
-    $arr = [
-        [
-        'name' => htmlspecialchars($_POST['name']) ,
-        'surname' => htmlspecialchars($_POST['surname']),
-        'email' => htmlspecialchars($_POST['email']),
-        'message' => htmlspecialchars($_POST['message']),
-        'created_at' => date('F j, Y')],
-    ];
+    // mysqli_query($link, $sql);
 
-    // var_dump($arr);
+    $stmt = mysqli_prepare($link, "INSERT INTO feedback (name, surname, email, message) VALUES (?, ?, ?, ?)");
 
-    $messages = array_merge($messages, $arr);
-  
+    mysqli_stmt_bind_param($stmt, "ssss", $name, $surname, $email, $message);
+
+    mysqli_stmt_execute($stmt);
+
 }
 
-render('contact/index', ['messages' => $messages]);
+$sql = "SELECT * FROM feedback";
+
+$result = mysqli_query($link, $sql);
+
+if($result) {
+    $messages = mysqli_fetch_all($result, MYSQLI_ASSOC);
+}else {
+    echo "\nError Could not able to execute $sql". mysqli_error($link);
+}
+
+render('contact/index', ['messages' => $messages, 'address' => $address]);

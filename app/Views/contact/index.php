@@ -54,14 +54,14 @@
             he remember although required. Bachelor unpacked be advanced at. Confined in declared marianne is vicinity.
           </em>
         </header>
-        
+        <?php if (isset($address)): ?>
         <div class="row">
           <div class="col-md-4">
             <svg class="svg-icon mb-4 text-primary svg-icon-big svg-icon-light">
               <use xlink:href="#map-marker-1"> </use>
             </svg>
             <h3>Address</h3>
-            <p>13/25 New Avenue<br>New Heaven, 45Y 73J<br>England, <strong>Great Britain</strong></p>
+            <p><?=$address['street']?><br><?=$address['zip']?><br><?=$address['city']?>, <strong><?=$address['country']?></strong></p>
           </div>
           <div class="col-md-4">
             <svg class="svg-icon mb-4 text-primary svg-icon-big svg-icon-light">
@@ -70,7 +70,7 @@
             <h3>Call center</h3>
             <p>This number is toll free if calling from Great Britain.</p>
             <p>otherwise we advise you to use the electronic form of communication.</p>
-            <p><strong>+33 555 444 333</strong></p>
+            <p><strong><?=$address['phone']?></strong></p>
           </div>
           
           <div class="col-md-4">
@@ -81,13 +81,14 @@
             <h3>Electronic support</h3>
             <p>Please feel free to write an email to us or to use our electronic ticketing system.</p>
             <ul class="list-unstyled">
-              <li><strong class="fw-bold"><a class="btn btn-link" href="mailto:">info@fakeemail.com</a></strong></li>
+              <li><strong class="fw-bold"><a class="btn btn-link" href="mailto:"><?=$address['email']?></a></strong></li>
               <li><strong class="fw-bold"><a href="#" class="btn btn-link">
                     Ticketio - our ticketing support platform</a></strong></li>
             </ul>
           </div>
 
         </div>
+        <?php endif?>
       </div>
     </section>
     
