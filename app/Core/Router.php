@@ -20,6 +20,7 @@ class Router
             // echo self::$routes[$this->request->get_uri()];
             return $this->init(self::$routes[$this->request->get_uri()]);
         }else{
+            // var_dump($this->request->get_uri());
             echo  '<h1>404 - not found</h1>';
         }
     }
@@ -27,19 +28,21 @@ class Router
     private function init(string $path)
     {
         $segments = explode('/', $path);
-        $controller = array_pop($segments);
+        // $controller = array_pop($segments);
+        $segment = array_pop($segments);
+        [$controller, $action] = explode('@', $segment);
         $controllerPath = array_pop($segments);
         $controllerPath = $controllerPath ? '/'.$controllerPath: '';
 
         $controllerPath = ROOT.'/app/Controllers/'.$controllerPath.'/'.$controller.'.php';
         if (file_exists($controllerPath)){
             include_once $controllerPath;
-            $controller = new $controller();
+            $controller = new $controller($this->request);
         }else{
             throw new Exception("File $controllerPath does not exists!");
         }
-       if (method_exists($controller, 'index')){
-            return $controller->index();
+       if (method_exists($controller, $action)){
+            return $controller->$action();
        }else {
             return $controller;
        }

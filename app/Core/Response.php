@@ -80,7 +80,9 @@ class Response
 
     public function render($view, $params=[])
     {
-        
+        foreach ($params as $key => $value) {
+            $$key = $value;
+        }
         ob_start();
         include_once ROOT."/app/Views/$view.php";
         $content = ob_get_clean();
