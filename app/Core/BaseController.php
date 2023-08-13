@@ -1,11 +1,8 @@
 <?php
-require_once ROOT.'/app/Core/Controller.php';
-require_once ROOT.'/app/Core/Response.php';
-require_once ROOT.'/app/Core/Interfaces/ResponseInterface.php';
+namespace Core;
 
-class BaseController extends Controller implements ResponseInterface
+class BaseController extends Controller implements Interfaces\ResponseInterface
 {
-
     public function getResponse(string $layout): Response 
     {
         return new Response($layout);

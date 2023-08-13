@@ -1,8 +1,9 @@
 <?php
-require_once ROOT.'/app/Core/Response.php';
-require_once ROOT.'/app/Core/Request.php';
-require_once ROOT.'/app/Core/BaseController.php';
-require_once ROOT. '/app/Models/Brand.php';
+namespace App\Controllers\Admin;
+
+use Core\{Response, Request, BaseController};
+
+use App\Models\Brand;
 
 class BrandController extends BaseController
 {
@@ -21,16 +22,26 @@ class BrandController extends BaseController
 
     public function index()
     {
-        $brands = $this->brand->get();
+        $brands = $this->brand->select()->get();
+        // var_dump($brands);
+        // exit();
         $this->response->render('admin/brand/index', ['brands' => $brands]);
     }
 
     public function create()
     {
-        $this->getResponse(static::$layout)->render('admin/brand/create');
+        $this->response->render('admin/brand/create');
     }
     public function store()
     {
+        $this->brand->name = $this->request->name;
+        $this->brand->description = $this->request->description;
+
+        if($this->brand->save()) {
+            $this->response->redirect('/admin/brands');
+        }else{
+            $this->response->redirect('/errors');
+        }
 
     }
 

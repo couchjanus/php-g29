@@ -1,6 +1,5 @@
 <?php
-
-require_once ROOT.'/app/Core/Request.php';
+namespace Core;
 
 class Router
 {
@@ -17,35 +16,24 @@ class Router
     public function run()
     {
         if(array_key_exists($this->request->get_uri(), self::$routes)){
-            // echo self::$routes[$this->request->get_uri()];
+            
             return $this->init(self::$routes[$this->request->get_uri()]);
         }else{
-            // var_dump($this->request->get_uri());
+           
             echo  '<h1>404 - not found</h1>';
         }
     }
 
     private function init(string $path)
     {
-        $segments = explode('/', $path);
-        // $controller = array_pop($segments);
-        $segment = array_pop($segments);
-        [$controller, $action] = explode('@', $segment);
-        $controllerPath = array_pop($segments);
-        $controllerPath = $controllerPath ? '/'.$controllerPath: '';
-
-        $controllerPath = ROOT.'/app/Controllers/'.$controllerPath.'/'.$controller.'.php';
-        if (file_exists($controllerPath)){
-            include_once $controllerPath;
-            $controller = new $controller($this->request);
-        }else{
-            throw new Exception("File $controllerPath does not exists!");
-        }
-       if (method_exists($controller, $action)){
+        [$controller, $action] = explode('@', $path);
+        $controller = "\\App\Controllers\\$controller";
+        $controller = new $controller($this->request);
+ 
+        if (method_exists($controller, $action)){
             return $controller->$action();
-       }else {
+        }else {
             return $controller;
-       }
-        
+        }
     }
 }

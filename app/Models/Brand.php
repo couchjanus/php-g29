@@ -1,12 +1,13 @@
 <?php
+namespace App\Models;
 
-class Brand 
+use Core\Entity;
+
+class Brand extends Entity
 {
-    public function get()
-    {
-        return [
-            ['id' => 1, 'name' => 'Cool Brand'],
-            ['id' => 2, 'name' => 'Super Brand'],
-        ];
-    }
+    protected static $table = 'brands';
+    public $id;
+    public $name;
+    public $description;
+   
 }

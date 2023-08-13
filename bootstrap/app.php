@@ -28,8 +28,9 @@ function render($view, $params=null)
     require_once realpath(ROOT."/app/Views/layouts/app.php");
     echo str_replace("{{ content }}", $content, ob_get_clean());
 }
+const DB_CONFIG_FILE = ROOT.'/config/db.php';
 
-
-require_once ROOT.'/app/Core/Router.php';
-$router = new Router();
+require_once __DIR__.'/Autoloader.php';
+// require_once ROOT.'/app/Core/Router.php';
+$router = new Core\Router();
 $router->run();

@@ -1,5 +1,7 @@
 <?php
-require_once ROOT.'/app/Core/Response.php';
+namespace Core\Interfaces;
+
+use Core\Response;
 
 interface ResponseInterface
 {

@@ -1,6 +1,7 @@
 <?php
+namespace App\Controllers;
 
-require_once ROOT.'/app/Core/BaseController.php';
+use Core\BaseController;
 
 class HomeController extends BaseController
 {

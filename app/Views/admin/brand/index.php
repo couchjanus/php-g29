@@ -13,8 +13,8 @@
           <tbody>
             <?php foreach ($brands as $brand):?>
             <tr>
-              <td><?=$brand['id']?></td>
-              <td><?=$brand['name']?></td>
+              <td><?=$brand->id?></td>
+              <td><?=$brand->name?></td>
               <td>data</td>
               
             </tr>

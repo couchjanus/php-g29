@@ -1,6 +1,5 @@
 <?php
-
-require_once ROOT.'/app/Core/Request.php';
+namespace Core;
 
 abstract class Controller
 {

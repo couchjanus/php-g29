@@ -1,6 +1,7 @@
 <?php
+namespace App\Controllers\Admin;
 
-require_once ROOT.'/app/Core/BaseController.php';
+use Core\BaseController;
 
 class DashboardController extends BaseController
 {
