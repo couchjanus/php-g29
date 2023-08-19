@@ -9,6 +9,8 @@ abstract class Entity
 
     private $columns;
 
+    private $where;
+
     public function __construct()
     {
         $this->connect = Connection::connect();
@@ -17,6 +19,12 @@ abstract class Entity
     public function select($columns = [])
     {
         $this->columns = $columns;
+        return $this;
+    }
+
+    private function where($where)
+    {
+        $this->where = $where;
         return $this;
     }
 
@@ -35,6 +43,10 @@ abstract class Entity
 
         // var_dump($query);
         // exit();
+        if (!empty($this->where)) {
+            $query .= " WHERE ";
+            $query .= $this->where;
+        }
         return $query;
     }
     public function get()
@@ -66,5 +78,20 @@ abstract class Entity
         $stmt = $this->connect->prepare($sql);
         $result = $stmt->execute();
         return $result;
+    }
+
+    public function first($id) 
+    {
+        $stmt = $this->connect->prepare($this->select()->where("id='$id'")->query());
+        $stmt->execute();
+        return $stmt->fetch();
+    }
+
+    public function delete($id)
+    {
+        $condition = "id='$id'";
+        $sql = "DELETE FROM ".static::$table." WHERE ".$condition;
+        $stmt = $this->connect->prepare($sql);
+        return $stmt->execute();
     }
 }

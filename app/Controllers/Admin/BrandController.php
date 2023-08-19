@@ -23,8 +23,7 @@ class BrandController extends BaseController
     public function index()
     {
         $brands = $this->brand->select()->get();
-        // var_dump($brands);
-        // exit();
+        
         $this->response->render('admin/brand/index', ['brands' => $brands]);
     }
 
@@ -45,21 +44,43 @@ class BrandController extends BaseController
 
     }
 
-    public function edit()
+    public function edit($params)
     {
-        $this->getResponse(static::$layout)->render('admin/brand/edit');
+       
+        extract($params);
+        
+        $brand = $this->brand->first($id);
+        $this->response->render('admin/brand/edit', compact('brand'));
+       
     }
 
     public function update()
     {
+        $this->brand->id = $this->request->id;
+        $this->brand->name = $this->request->name;
+        $this->brand->description = $this->request->description;
+
+        if($this->brand->save()) {
+            $this->response->redirect('/admin/brands');
+        }else{
+            $this->response->redirect('/errors');
+        }
 
     }
     public function show()
     {
 
     }
-    public function delete()
+    public function destroy($params)
     {
+        extract($params);
+        If($_POST) {
+            if ($this->brand->delete($this->request->id)) {
+                $this->response->redirect('/admin/brands');
+            }else{
+                $this->response->redirect('/errors');
+            }
+        }
 
     }
 

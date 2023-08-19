@@ -10,11 +10,18 @@
             </tr>
           </thead>
           <tbody>
-            <?php foreach ($brands as $brand):?>
+            <?php foreach ($categories as $category):?>
             <tr>
-              <td><?=$brand['id']?></td>
-              <td><?=$brand['name']?></td>
-              <td>data</td>
+              <td><?=$category['id']?></td>
+              <td><?=$category['name']?></td>
+              <td>
+              <a href="/admin/categories/edit/<?=$category->id?>"><button class="btn btn-warning">Edit</button></a>
+                <form action="/admin/categories/destroy/<?=$category->id?>" method="post" style="display: inline-block;">
+                <input type="hidden" name="id" value="<?=$category->id?>">
+                <button class="btn btn-danger" type="submit">Delete</button>
+              
+              
+              </td>
               
             </tr>
             <?php endforeach?>
