@@ -102,7 +102,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link d-flex align-items-center gap-2" href="#">
+              <a class="nav-link d-flex align-items-center gap-2" href="/admin/products">
                 <svg class="bi"><use xlink:href="#cart"/></svg>
                 Products
               </a>
@@ -111,6 +111,18 @@
               <a class="nav-link d-flex align-items-center gap-2" href="/admin/brands">
                 <svg class="bi"><use xlink:href="#file-earmark"/></svg>
                 Brands
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link d-flex align-items-center gap-2" href="/admin/sections">
+                <svg class="bi"><use xlink:href="#file-earmark"/></svg>
+                Sections
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link d-flex align-items-center gap-2" href="/admin/badges">
+                <svg class="bi"><use xlink:href="#file-earmark"/></svg>
+                Badges
               </a>
             </li>
             <li class="nav-item">
@@ -207,6 +219,7 @@
         </div>
       </div>
     <div class="table-responsive small">
+      <?php require_once ROOT."/app/Views/layouts/_flash_message.php";?>
     {{ content }}
     </div>
     </main>

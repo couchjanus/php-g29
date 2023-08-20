@@ -3,7 +3,7 @@ namespace App\Controllers\Admin;
 
 use Core\{Response, Request, BaseController, Upload, Resizer};
 
-use App\Models\Category;
+use App\Models\{Category, Section};
 
 
 class CategoryController extends BaseController
@@ -33,7 +33,8 @@ class CategoryController extends BaseController
 
     public function create()
     {
-        $this->response->render('admin/category/create');
+        $sections = (new Section())->select()->get();
+        $this->response->render('admin/category/create', compact('sections'));
     }
     public function store()
     {
@@ -47,11 +48,23 @@ class CategoryController extends BaseController
         $this->category->cover = $this->save($image, "/categories/", $imgObj->type, 75);
         unset($imgObj);
 
-        if($this->category->save()) {
+        try {
+            $this->category->save();
+            $this->request->flash()->success("Category Stored Successfdully!");
             $this->response->redirect('/admin/categories');
-        } else {
+        }
+
+        catch(\Exception $e) {
+            $this->request->flash()->danger("Faild Stored Category!");
             $this->response->redirect('/errors');
         }
+        // if($this->category->save()) {
+        //     $this->request->flash()->success("Category Stored Successfdully!");
+        //     $this->response->redirect('/admin/categories');
+        // } else {
+        //     $this->request->flash()->danger("Faild Stored Category!");
+        //     $this->response->redirect('/errors');
+        // }
     }
 
     public function edit($params)

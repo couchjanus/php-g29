@@ -33,6 +33,5 @@ const MEDIA = '/storage';
 define("STORAGE", $_SERVER['DOCUMENT_ROOT'].MEDIA);
 
 require_once __DIR__.'/Autoloader.php';
-// require_once ROOT.'/app/Core/Router.php';
-$router = new Core\Router();
-$router->run();
+
+(new Core\App())->run();

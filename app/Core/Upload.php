@@ -16,20 +16,7 @@ trait Upload
         return substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil($length/strlen($x)) )),1,$length);
 
     }
-    // public function save($image, $path='', $type=IMAGETYPE_JPEG, $quality=80)
-    // {
-    //     $filename = $this->fileName();
-    //     $new_filename = STORAGE.$path.$filename;
-
-    //     if ($type==IMAGETYPE_JPEG){
-    //         imagejpeg($image, $new_filename, $quality);
-    //     }
-
-    //     unset($image);
-    //     return "http://".$_SERVER['HTTP_HOST'].MEDIA.$path.$filename;
-
-    // }
-
+    
     public function save($image, $path='', $type=IMAGETYPE_JPEG, $quality=80) {
         $filename = $this->fileName();
         $new_filename = STORAGE.$path.$filename;
@@ -43,5 +30,4 @@ trait Upload
          unset($image);
          return "http://".$_SERVER['HTTP_HOST'].MEDIA.$path.$filename;
     }
-
 }

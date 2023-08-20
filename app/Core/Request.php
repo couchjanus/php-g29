@@ -36,4 +36,14 @@ class Request
     {
         return trim($_SERVER['REQUEST_URI'], '/');
     }
+
+    public function session()
+    {
+        return Session::instance();
+    }
+
+    public function flash()
+    {
+        return Session::instance();
+    }
 }
