@@ -1,5 +1,5 @@
 <div class="row p-0 m-0">
-    <form method="post" action="/admin/categories/create" enctype="multipart/form-data">
+    <form method="post" action="/admin/categories/store" enctype="multipart/form-data">
     <div class="mb-3">
         <label for="category_name" class="form-label">Category Name</label>
         <input type="text" class="form-control" id="category_name" name="name" placeholder="Ender Category Name">

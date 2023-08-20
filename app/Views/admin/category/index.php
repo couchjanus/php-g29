@@ -12,8 +12,8 @@
           <tbody>
             <?php foreach ($categories as $category):?>
             <tr>
-              <td><?=$category['id']?></td>
-              <td><?=$category['name']?></td>
+              <td><?=$category->id?></td>
+              <td><?=$category->name?></td>
               <td>
               <a href="/admin/categories/edit/<?=$category->id?>"><button class="btn btn-warning">Edit</button></a>
                 <form action="/admin/categories/destroy/<?=$category->id?>" method="post" style="display: inline-block;">

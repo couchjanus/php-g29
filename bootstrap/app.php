@@ -29,6 +29,8 @@ function render($view, $params=null)
     echo str_replace("{{ content }}", $content, ob_get_clean());
 }
 const DB_CONFIG_FILE = ROOT.'/config/db.php';
+const MEDIA = '/storage';
+define("STORAGE", $_SERVER['DOCUMENT_ROOT'].MEDIA);
 
 require_once __DIR__.'/Autoloader.php';
 // require_once ROOT.'/app/Core/Router.php';

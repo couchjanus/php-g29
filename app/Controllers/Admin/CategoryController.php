@@ -37,12 +37,14 @@ class CategoryController extends BaseController
     }
     public function store()
     {
+        // var_dump($this->request);
+        // exit();
         $this->category->name = $this->request->name;
         $this->category->section_id = $this->request->section_id;
         
         $imgObj = $this->load($this->request->cover['tmp_name']);
-
-        $this->category->cover = $this->save($imgObj, "/categories/", $imgObj->type, 75);
+        $image = $this->resize_width(200, $imgObj);
+        $this->category->cover = $this->save($image, "/categories/", $imgObj->type, 75);
         unset($imgObj);
 
         if($this->category->save()) {
