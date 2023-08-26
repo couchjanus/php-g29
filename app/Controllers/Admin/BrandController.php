@@ -1,9 +1,9 @@
 <?php
-namespace App\Controllers\Admin;
+namespace Controllers\Admin;
 
 use Core\{Response, Request, BaseController};
 
-use App\Models\Brand;
+use Models\Brand;
 
 class BrandController extends BaseController
 {

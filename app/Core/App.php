@@ -1,16 +1,13 @@
 <?php
-
 namespace Core;
 
-class App 
+class App
 {
-    public function __construct()
-    {
+    public function __construct(){
         Session::instance();
     }
-
-    public function run()
-    {
-        (new Router())->run();
+    public function run(){
+        $routes = ROOT.'/config/routes.php';
+        (new Router($routes))->run();
     }
 }

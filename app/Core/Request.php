@@ -4,24 +4,26 @@ namespace Core;
 class Request 
 {
     private array $request;
-
+    
     public function __construct()
     {
         $this->request = $this->prepare($_REQUEST, $_FILES);
     }
     public function __get($name)
     {
-        if (isset($this->request[$name])) {
+        if(isset($this->request[$name])) {
             return $this->request[$name];
         }
     }
 
-    private function prepare(array $request, array $files) {
+    private function prepare(array $request, array $files)
+    {
         $request = $this->clean($request);
         return array_merge($files, $request);
     }
 
-    private function clean($data) {
+    private function clean($data) 
+    {
         if (is_array($data)) {
             $cleaned = [];
             foreach ($data as $key => $value) {
@@ -32,18 +34,21 @@ class Request
         return trim(htmlspecialchars($data, ENT_QUOTES));
     }
 
-    public function get_uri()
+    public function getRequest()
     {
+        return $this->request;
+    }
+
+    public function uri() {
         return trim($_SERVER['REQUEST_URI'], '/');
     }
 
-    public function session()
-    {
+    public function session() {
         return Session::instance();
     }
 
-    public function flash()
-    {
-        return Session::instance();
+    // Allows flash shorthand
+    public function flash() {
+       return Session::instance();
     }
 }

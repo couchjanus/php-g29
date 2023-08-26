@@ -1,9 +1,14 @@
-<?php
+<?php 
 namespace Core;
 
-class BaseController extends Controller implements Interfaces\ResponseInterface
+
+class BaseController extends Controller implements Interfaces\makeResponse
 {
-    public function getResponse(string $layout): Response 
+    /**
+     * @var Response
+     */
+
+    public function getResponse(string $layout) : Response
     {
         return new Response($layout);
     }

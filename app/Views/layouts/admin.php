@@ -132,9 +132,15 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link d-flex align-items-center gap-2" href="#">
+              <a class="nav-link d-flex align-items-center gap-2" href="/admin/roles">
                 <svg class="bi"><use xlink:href="#people"/></svg>
-                Customers
+                Roles
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link d-flex align-items-center gap-2" href="/admin/users">
+                <svg class="bi"><use xlink:href="#people"/></svg>
+                Users
               </a>
             </li>
             <li class="nav-item">

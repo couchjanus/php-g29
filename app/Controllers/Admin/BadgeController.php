@@ -1,9 +1,9 @@
 <?php
-namespace App\Controllers\Admin;
+namespace Controllers\Admin;
 
 use Core\{Response, Request, BaseController};
 
-use App\Models\Badge;
+use Models\Badge;
 
 class BadgeController extends BaseController
 {

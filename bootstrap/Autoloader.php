@@ -1,25 +1,14 @@
 <?php
-
 class Autoloader
 {
-    public static function ClassLoader(string $className)
-    {
-        $part = explode('\\', $className);
-
-        $classDirs = [
-            '/app/Core/',
-            '/app/Core/Interfaces/',
-            '/app/Models/',
-            '/app/Controllers/',
-            '/app/Controllers/Admin/',
-        ];
-
-        foreach ($classDirs as $classDir) {
-            $filePath = ROOT.$classDir.end($part).'.php';
-
-            if(is_file($filePath) && is_readable($filePath)) {
-                require_once $filePath;
-            }
+    public static function ClassLoader (string $class) {
+        
+        $fqcnToPath = fn(string $fqcn) => str_replace('\\', '/', $fqcn) . '.php';
+        $path = $fqcnToPath($class);
+        $filePath = ROOT  . '/app/' . $path;
+        
+        if(is_file($filePath) && is_readable($filePath)) {
+            require_once $filePath;
         }
     }
 }

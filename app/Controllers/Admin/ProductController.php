@@ -1,9 +1,9 @@
 <?php
-namespace App\Controllers\Admin;
+namespace Controllers\Admin;
 
 use Core\{Response, Request, BaseController, Upload, Resizer};
 
-use App\Models\{Product, Brand, Badge, Category};
+use Models\{Product, Brand, Badge, Category};
 
 
 class ProductController extends BaseController

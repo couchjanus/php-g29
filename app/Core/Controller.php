@@ -1,14 +1,12 @@
-<?php
+<?php 
 namespace Core;
 
 abstract class Controller
 {
     /**
-     * Constructor function
-     *
-     * @param Request $request
+     * @var Request
      */
-    public function __construct(protected Request $request) 
+    public function __construct(protected Request $request )
     {
         $this->request = $request ?? new Request();
     }

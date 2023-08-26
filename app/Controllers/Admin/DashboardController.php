@@ -1,14 +1,14 @@
 <?php
-namespace App\Controllers\Admin;
+namespace Controllers\Admin;
 
-use Core\BaseController;
+// use Core\BaseController;
 
-class DashboardController extends BaseController
+class DashboardController extends AdminController
 {
-    protected static string $layout = 'admin';
+    // protected static string $layout = 'admin';
 
     public function index()
     {
-        $this->getResponse(static::$layout)->render('admin/index');
+        $this->response->render('admin/index');
     }
 }

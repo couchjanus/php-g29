@@ -33,7 +33,13 @@
       <div class="toolbar">
         <a href="#"><i class="far fa-heart"></i><small class="text-gray">(<span id="total-number-items-in-wishlist">0</span>)</small></a>
         <a href="cart.html"><i class="fas fa-dolly-flatbed"></i><small class="text-gray">(<span id="total-number-items-in-cart">0</span>)</small></a>
+
+        <?php if(Core\Session::instance()->get('userId')):?>
+          <a href="/profile" title="Profile"><i class="fas fa-address-card"></i></a>
+          <a href="/logout" title="Logout"><i class="fas fa-sign-out-alt"></i></a>
+        <?php else: ?>
         <a onclick="window.login.showModal();"><i class="far fa-user"></i></a>
+        <?php endif?>
       </div>
     </header>
     <!-- /Navigation -->
@@ -44,18 +50,18 @@
 
     <div class="modal-window" style="display: block;"></div>
     <dialog id="login">
-      <form action="" class="login-form">
+      <form action="/signin" method="POST" class="login-form">
         <h3>sign in</h3>
-        <input type="email" name="" placeholder="enter your email" id="" class="box form-control">
-        <input type="password" name="" placeholder="enter your password" id="" class="box form-control">
+        <input type="email" name="email" placeholder="enter your email" id="" class="box form-control">
+        <input type="password" name="password" placeholder="enter your password" id="" class="box form-control">
         <div class="remember form-check">
-            <input type="checkbox" name="" id="remember-me" class="form-check-input">
+            <input type="checkbox" name="remember" id="remember-me" class="form-check-input">
             <label for="remember-me">remember me</label>
         </div>
         <input type="submit" value="sign in" class="btn btn-primary">
         <div class="links">
             <a href="#">forget password</a>
-            <a href="#">sign up</a>
+            <a href="/register">sign up</a>
             <a href="#" onclick="window.login.close();">Close</a>
         </div>
       </form>

@@ -1,9 +1,9 @@
 <?php
-namespace App\Controllers\Admin;
+namespace Controllers\Admin;
 
 use Core\{Response, Request, BaseController, Upload, Resizer};
 
-use App\Models\{Category, Section};
+use Models\{Category, Section};
 
 
 class CategoryController extends BaseController
