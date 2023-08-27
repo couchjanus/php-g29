@@ -19,8 +19,37 @@
         </header>
       <carousel-component></carousel-component>
        
-
       </div>
     </section>
+
+      <!-- catalog -->
+    <section class="catalog" id="catalog">
+
+<header class="header">
+  <h2>Our <span>Products</span></h2>
+</header>
+<!--  -->
+<div class="product-container"></div>
+</section>
+
+<!-- SERVICES-->
+<section class="py-5 bg-light">
+<div class="container">
+  <div class="flex-container text-center py-3 services">
+    
+  </div>
+</div>
+</section>
+<!-- divider -->
+<section class="divider bg-cover bg-center bg-fixed py-5 mt-5" style="background: url(./images/divider-bg.jpg)">
+  <!-- container -->
+  <div class="container py-5 px-4 align-right">
+      <p>New Inspiration 2023</p>
+      <h1>20% off on new season</h1>
+      <a href="shop.html">Browse collections</a>
+  </div>
+</section>
+
+
 
     <script src="js/components/carousel.js"></script>

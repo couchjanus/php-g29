@@ -1,8 +1,15 @@
 <?php
 return [
     '' => 'Controllers\HomeController@index',
+    'shop' => 'Controllers\ShopController@index',
     'about' => 'Controllers\AboutController@index',
     'contact' => 'Controllers\ContactController@index',
+    'cart' => 'Controllers\CartController@index',
+    'products' => 'Controllers\HomeController@getProducts',
+    'categories' => 'Controllers\HomeController@getCategories',
+    'api/auth' => 'Controllers\CartController@auth',
+    'api/checkout' => 'Controllers\CartController@checkout',
+    
     
     'admin' => 'Controllers\Admin\DashboardController@index',
     
@@ -19,6 +26,14 @@ return [
     'admin/badges/edit/{id}' => 'Controllers\Admin\BadgeController@edit',
     'admin/badges/update' => 'Controllers\Admin\BadgeController@update',
     'admin/badges/destroy/{id}' => 'Controllers\Admin\BadgeController@destroy',
+
+    'admin/sections' => 'Controllers\Admin\SectionController@index',
+    'admin/sections/create' => 'Controllers\Admin\SectionController@create',
+    'admin/sections/store' => 'Controllers\Admin\SectionController@store',
+    'admin/sections/edit/{id}' => 'Controllers\Admin\SectionController@edit',
+    'admin/sections/update' => 'Controllers\Admin\SectionController@update',
+    'admin/sections/destroy/{id}' => 'Controllers\Admin\SectionController@destroy',
+
     
     'admin/categories' => 'Controllers\Admin\CategoryController@index',
     'admin/categories/create' => 'Controllers\Admin\CategoryController@create',
@@ -43,6 +58,7 @@ return [
     "logout" => "Controllers\LoginController@logout",
 
     "profile" => "Controllers\ProfileController@index",
+    "profile/orders" => "Controllers\ProfileController@orders",
 
     'admin/roles' => 'Controllers\Admin\RoleController@index',
     'admin/roles/create' => 'Controllers\Admin\RoleController@create',

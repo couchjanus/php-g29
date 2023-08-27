@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css"
       integrity="sha512-q3eWabyZPc1XTCmF+8/LuE1ozpg5xxn7iO89yfSOd5/oKvyqLngoNGsx8jq92Y8eXJ/IRxQbEC+FGSYxtk2oiw=="
       crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" type="text/css" href="css/app.css">
+    <link rel="stylesheet" type="text/css" href="/css/app.css">
  
   </head>
 
@@ -32,7 +32,7 @@
 
       <div class="toolbar">
         <a href="#"><i class="far fa-heart"></i><small class="text-gray">(<span id="total-number-items-in-wishlist">0</span>)</small></a>
-        <a href="cart.html"><i class="fas fa-dolly-flatbed"></i><small class="text-gray">(<span id="total-number-items-in-cart">0</span>)</small></a>
+        <a href="/cart"><i class="fas fa-dolly-flatbed"></i><small class="text-gray">(<span id="total-number-items-in-cart">0</span>)</small></a>
 
         <?php if(Core\Session::instance()->get('userId')):?>
           <a href="/profile" title="Profile"><i class="fas fa-address-card"></i></a>
@@ -52,8 +52,8 @@
     <dialog id="login">
       <form action="/signin" method="POST" class="login-form">
         <h3>sign in</h3>
-        <input type="email" name="email" placeholder="enter your email" id="" class="box form-control">
-        <input type="password" name="password" placeholder="enter your password" id="" class="box form-control">
+        <input type="email" name="email" placeholder="enter your email" class="box form-control">
+        <input type="password" name="password" placeholder="enter your password"  class="box form-control">
         <div class="remember form-check">
             <input type="checkbox" name="remember" id="remember-me" class="form-check-input">
             <label for="remember-me">remember me</label>
@@ -70,7 +70,7 @@
     <!-- <script src="js/db.js"></script> -->
     <!-- <script src="js/components/carousel.js"></script> -->
     <script src="js/components/footer.js"></script>
-    <!-- <script src="js/app.js"></script> -->
+    <script src="/js/app.js"></script>
   </body>
 
 </html>

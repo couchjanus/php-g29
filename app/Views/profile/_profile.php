@@ -1,7 +1,7 @@
 <div class="profile-sidebar position-fixed">
 
 	<div class="profile-userpic">
-		<a href="/profile" class="pull-right"><img title="profile image" class="img-circle img-responsive" src="/icons/user.png"></a>
+		<a href="/profile" class="pull-right"><img title="profile image" class="img-circle img-responsive" src="/images/user.png"></a>
 	</div>
 
 

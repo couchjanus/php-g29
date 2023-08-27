@@ -11,6 +11,10 @@ abstract class Entity
 
     private $where;
 
+    private $join;
+
+    private $injoin;
+
     public function __construct()
     {
         $this->connect = Connection::connect();
@@ -24,9 +28,15 @@ abstract class Entity
         return $this;
     }
 
-    private function where($where)
+    public function where($where)
     {
         $this->where = $where;
+        return $this;
+    }
+
+    public function injoin($injoin)
+    {
+        $this->injoin = $injoin;
         return $this;
     }
 
@@ -44,6 +54,15 @@ abstract class Entity
 
         $query .= " FROM ";
         $query .= static::$table;
+
+        if(!empty($this->injoin)) {
+            foreach ($this->injoin as $key => $value) {
+                $query .= " INNER JOIN " . $key; 
+                $query .= " ON " . $key; 
+                $query .= ".id=" . static::$table; 
+                $query .= "." . $value; 
+            }
+        }
 
         if (!empty($this->where)) {
             $query .= " WHERE ";
@@ -119,5 +138,13 @@ abstract class Entity
         $stmt->execute();
         return $stmt->fetch();
     }
+
+    public function insert($sql, $params = []) {
+        $stmt = $this->connect->prepare($sql);
+        $result = $stmt->execute($params);
+        return $result;
+    }
+
+
 
 }
